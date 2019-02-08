@@ -2,6 +2,18 @@
 #include "table.h"
 #include <stdio.h>
 
+void Greeting(void);
+void GoodBye(void);
+
+void main(void)
+{
+    Greeting();
+    Table * table = InitializeTable();
+    while (PlayRoundAndContinue(table)) continue;
+    GoodBye();
+    ClearTable(table);
+}
+
 void Greeting(void)
 {
     printf(
@@ -37,11 +49,8 @@ void Greeting(void)
     SkipRestOfLine();
 }
 
-void main(void)
+void GoodBye(void)
 {
-    Greeting();
-    Table * table = InitializeTable();
-    while (PlayRoundAndContinue(table)) continue;
     printf(
         "\n\n"
         "                          |\\         /|        \n"
@@ -74,5 +83,5 @@ void main(void)
         "  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
         "                       Press Enter to Exit                    \n\n\n");
     SkipRestOfLine();
-    ClearTable(table);
 }
+
