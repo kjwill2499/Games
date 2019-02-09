@@ -6,11 +6,13 @@
 #include <string.h>
 #include <time.h>
 
+
 void SkipRestOfLine(void)
 {
     int ch;
     while ((ch = getchar()) != '\n' && ch != EOF) continue;
 }
+
 
 bool GetYOrNFromUser(void)
 {
@@ -25,6 +27,7 @@ bool GetYOrNFromUser(void)
     return false;
 }
 
+
 bool GetDigitFromUser(unsigned int * number, unsigned int min, unsigned int max, bool convertToIndex)
 {
     int ch = getchar();
@@ -38,6 +41,7 @@ bool GetDigitFromUser(unsigned int * number, unsigned int min, unsigned int max,
     if (convertToIndex) --(*number);
     return true;
 }
+
 
 unsigned int SelectPlayerByName(Table * table)
 {
@@ -54,6 +58,7 @@ unsigned int SelectPlayerByName(Table * table)
     return playerSelected;
 }
 
+
 bool GetStringFromUser(char * name, unsigned int maxNameLength, char * compare)
 {
     char *pos;
@@ -63,6 +68,7 @@ bool GetStringFromUser(char * name, unsigned int maxNameLength, char * compare)
     _strupr(name);
     return strcmp(name, compare);
 }
+
 
 Table * InitializeTable()
 {
@@ -111,6 +117,7 @@ Table * InitializeTable()
     return &table;
 }
 
+
 unsigned int GetRandomNumber(unsigned int range)
 {
     if (range == 0) return UINT_MAX;
@@ -122,6 +129,7 @@ unsigned int GetRandomNumber(unsigned int range)
         return number % range;
     }
 }
+
 
 void ClearTable(Table * table)
 {
@@ -135,6 +143,8 @@ void ClearTable(Table * table)
         }
     }
 }
+
+
 bool TileFromBag(TileType * tileFromBag, TileBag * tileBag)
 {
     if (tileBag->numTile == 0)
@@ -161,6 +171,7 @@ bool TileFromBag(TileType * tileFromBag, TileBag * tileBag)
     return false;
 }
 
+
 void FillFactories(Table * table)
 {
     unsigned int factoryIndex;
@@ -180,6 +191,7 @@ void FillFactories(Table * table)
     }
 }
 
+
 void PrintFactories(const Table * table)
 {
     unsigned int factoryIndex;
@@ -193,6 +205,7 @@ void PrintFactories(const Table * table)
         PrintFactory(table->tileFactory[factoryIndex], false);
     }
 }
+
 
 void PrintPlayersInRow(const Table * table)
 {
@@ -240,13 +253,14 @@ void PrintPlayersInRow(const Table * table)
     }
 }
 
+
 void UndoTakeStartingTile(unsigned int * startingPosition, unsigned int * brokenTiles)
 {
     *startingPosition = (unsigned int)-1;
     *brokenTiles -= (unsigned int)1;
 }
 
-//change to only pass pointer to broken tile not player
+
 bool AcceptBrokenTiles(unsigned int * playersBrokenTiles, unsigned int numberOfBroken)
 {
     printf("  Take %u BROKEN TILES? ", numberOfBroken);
@@ -257,6 +271,7 @@ bool AcceptBrokenTiles(unsigned int * playersBrokenTiles, unsigned int numberOfB
     }
     return false;
 }
+
 
 bool TakeTurn(Table * table, Player * player)
 {
@@ -369,7 +384,6 @@ bool TakeTurn(Table * table, Player * player)
                 }
                 player->patternLine.type[rowChoice] = tileChoice;
                 player->patternLine.contents[rowChoice] = totalTiles;
-
             }
         }
         table->tilesOnTable -= factoryChoice[tileChoice];
@@ -390,6 +404,7 @@ bool TakeTurn(Table * table, Player * player)
     return true;
 }
 
+
 void DeclareWinner(Table * table)
 {
     unsigned int playerIndex;
@@ -409,6 +424,7 @@ void DeclareWinner(Table * table)
         if (winningPlayer[playerIndex]) printf("\n\n      %s!!!", table->players[playerIndex]->name);
     }
 }
+
 
 bool PlayRoundAndContinue(Table * table)
 {
@@ -435,6 +451,7 @@ bool PlayRoundAndContinue(Table * table)
         return !completedRow;
     }
 }
+
 
 void PrintTable(const Table * table)
 {

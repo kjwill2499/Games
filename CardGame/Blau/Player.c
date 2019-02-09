@@ -58,7 +58,6 @@ void PrintPlayer(Player * player)
     PrintBroken(player);
 }
 
-/* has problem with taking from middle and putting in broken tiles, currently doesn't take starting token!*/
 bool ScorePlayerIsComplete(Player * player, TileBag * tileBag)
 {
     unsigned int row;
