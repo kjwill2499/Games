@@ -1,8 +1,8 @@
-#pragma once
-#include "Tile.h"
 
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
+
+#include "Tile.h"
 
 #define MAX_NAME_LENGTH 16
 
