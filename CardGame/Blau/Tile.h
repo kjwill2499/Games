@@ -7,7 +7,7 @@
 
 #define MAX_BROKEN_TILES 7
 
-typedef enum
+typedef enum tileTypes
 {
     TILE_BLUE,
     TILE_YELLOW,
@@ -17,13 +17,13 @@ typedef enum
     TileTypeCount
 }TileType;
 
-typedef struct
+typedef struct patternLine
 {
     TileType type[TileTypeCount];
     unsigned int contents[TileTypeCount];
 } PatterLine;
 
-typedef struct
+typedef struct tileBag
 {
     TileType numOfType[TileTypeCount];
     unsigned int numTile;
