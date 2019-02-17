@@ -24,6 +24,7 @@ typedef enum
     BOXSEET_NOCTURNE,
     BOXSET_RENAISANCE,
     BOXSET_PROMO
+    BoxSetCount
 } BoxSet;
 
 typedef enum
@@ -163,6 +164,7 @@ typedef enum
 typedef struct
 {
     char title[16];
+    bool isActive;
     CardName name;                              /* The enumerated name of card, serves as an index to that card */
     CardType type;                              /* The enumerated type of tile */
     char title[MAX_TITLE_LENGTH];               /*String containing the card title for printing*/
